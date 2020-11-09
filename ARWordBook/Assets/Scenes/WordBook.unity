@@ -198,8 +198,9 @@ GameObject:
   - component: {fileID: 174448189}
   - component: {fileID: 174448192}
   - component: {fileID: 174448191}
+  - component: {fileID: 174448190}
   m_Layer: 5
-  m_Name: WordText
+  m_Name: Word
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +214,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174448188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 298266742}
@@ -224,6 +225,21 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: 120}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &174448190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174448188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ce3e5dfbbe242439a07f4483b1d9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  word: {fileID: 174448191}
+  wordes: {fileID: 1343506204}
+  time: 0.5
 --- !u!114 &174448191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,11 +533,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 60
+    m_MinSize: 10
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -594,11 +610,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 60
+    m_MinSize: 10
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -626,7 +642,7 @@ GameObject:
   - component: {fileID: 1343506205}
   - component: {fileID: 1343506204}
   m_Layer: 5
-  m_Name: WordDesText
+  m_Name: WordDes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,7 +656,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343506201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 298266742}
@@ -821,18 +837,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 60
+    m_MinSize: 10
+    m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ARCamScene
+  m_Text: ARCam
 --- !u!222 &1430555330
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -877,8 +893,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -284, y: 488.9}
-  m_SizeDelta: {x: 500, y: 200}
+  m_AnchoredPosition: {x: -370, y: 315}
+  m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1615967249
 MonoBehaviour:
@@ -923,7 +939,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1736681774}
+      - m_Target: {fileID: 174448190}
         m_MethodName: StartButton
         m_Mode: 1
         m_Arguments:
@@ -981,7 +997,6 @@ GameObject:
   - component: {fileID: 1736681773}
   - component: {fileID: 1736681772}
   - component: {fileID: 1736681771}
-  - component: {fileID: 1736681774}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1055,21 +1070,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1736681774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736681770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ce3e5dfbbe242439a07f4483b1d9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  word: {fileID: 174448191}
-  wordes: {fileID: 1343506204}
-  time: 0.5
 --- !u!1 &1863097595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,8 +1082,9 @@ GameObject:
   - component: {fileID: 1863097600}
   - component: {fileID: 1863097599}
   - component: {fileID: 1863097598}
+  - component: {fileID: 1863097597}
   m_Layer: 5
-  m_Name: ARCamSceneButton
+  m_Name: ARCame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1104,11 +1105,23 @@ RectTransform:
   m_Father: {fileID: 298266742}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -336}
-  m_SizeDelta: {x: 800, y: 400}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -159, y: 50}
+  m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1863097597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863097595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef343d092eacd944c9e32c0dd34a6340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1863097598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1152,9 +1165,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4191218376008302889, guid: 186539485b3d64c489188f24884d3adb,
-          type: 3}
-        m_MethodName: OnCamScene
+      - m_Target: {fileID: 1863097597}
+        m_MethodName: ButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1236,8 +1248,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 290, y: 488.8999}
-  m_SizeDelta: {x: 500, y: 200}
+  m_AnchoredPosition: {x: 362, y: 315}
+  m_SizeDelta: {x: 180, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979777685
 MonoBehaviour:
@@ -1282,7 +1294,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1736681774}
+      - m_Target: {fileID: 174448190}
         m_MethodName: StopButton
         m_Mode: 1
         m_Arguments:
