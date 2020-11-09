@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SamplesResources/Scenes/0-Main.unity
-    guid: a09cb257d566c489595b16ab37547666
+    path: Assets/Scenes/Intro.unity
+    guid: a9a81d19b332eaa4f8f9f5f55a06d72f
+  - enabled: 1
+    path: Assets/Scenes/WordBook.unity
+    guid: 0a8424b178abaac4c92a6c4b7e15cf8b
+  - enabled: 1
+    path: Assets/Scenes/VuforiaCam.unity
+    guid: b2fe08d01f4dedf4c9b6fa7b7715b231
   m_configObjects: {}
