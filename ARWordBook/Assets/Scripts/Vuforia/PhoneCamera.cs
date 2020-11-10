@@ -19,7 +19,8 @@ public class PhoneCamera : MonoBehaviour
     public AspectRatioFitter fitter;
     public Text textOCR;
 
-   
+    string[] files = null;
+
     public void btnClick()
     {
         byte[] jpg = getBytesFromImage();
@@ -31,17 +32,15 @@ public class PhoneCamera : MonoBehaviour
 
     private byte[] getBytesFromImage()
     {
-        string[] files = null;
+        files = Directory.GetFiles(Application.persistentDataPath + "/", "*.png");
         string pathToFile = files[0];
-
+       
         Texture2D snap = GetScreenshotImage(pathToFile);
-        snap.SetPixels(webCam.GetPixels());
         snap.Apply();
 
-        webCam.Pause();
         camAvailable = false;
 
-        byte[] bytes = snap.EncodeToJPG();
+        byte[] bytes = snap.EncodeToPNG();
         textOCR.text = "Byte length: " + bytes.Length;
         return bytes;
     }
