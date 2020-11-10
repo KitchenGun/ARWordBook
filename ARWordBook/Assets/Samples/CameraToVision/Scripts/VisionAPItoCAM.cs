@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VisionAPItoCAM : MonoBehaviour {
 
-
+    public Text text;
         public string ApiKey = "YOUR VISION API KEY HERE"; // replace with your own key
         // Emotion URL can be /tag or /analyze depending on what you need the vision service to be - View Microsoft Documentation for more details
         public string emotionURL = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/tag";
@@ -34,8 +35,10 @@ public class VisionAPItoCAM : MonoBehaviour {
 
             WWW www = new WWW(emotionURL, bytes, headers);
 
-            yield return www;
-            responseData = www.text;
+             yield return www;
+
+            text.text = www.text;
+        responseData = www.text;
             ParseJSONData(responseData);
         }
 
