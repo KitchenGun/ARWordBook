@@ -100,7 +100,7 @@ public class DB : MonoBehaviour
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
             Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
             Wlist.Add(word);
-            Debug.Log(word.dWord + "," +  word.Mean);
+            Debug.Log(word.eWord + "," +  word.kWord);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -125,7 +125,7 @@ public class DB : MonoBehaviour
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
             Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
             Wlist.Add(word);
-            Debug.Log(word.dWord + "," + word.Mean);
+            Debug.Log(word.eWord + "," + word.kWord);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -148,9 +148,9 @@ public class DB : MonoBehaviour
         while (dataReader.Read())
         {
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
-            Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
+            Word word = new Word(dataReader.GetInt32(0),dataReader.GetString(1), dataReader.GetString(2));
             Wlist.Add(word);
-            Debug.Log(word.dWord + "," + word.Mean);
+            Debug.Log(word.eWord + "," + word.kWord);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -164,15 +164,20 @@ public class DB : MonoBehaviour
     #region Word class
     class Word
     {
-        public int no { get; set; }
-        public string dWord {get;set;}
-        public string Mean { get; set; }
+        public int Id { get; set; }
+        public string eWord {get;set;}
+        public string kWord { get; set; }
 
-        public Word(string dword, string mean)
+        public Word(string eword, string kword)
         {
-            
-            dWord = dword;
-            Mean = mean;
+            eWord = eword;
+            kWord = kword;
+        }
+        public Word(int id,string eword, string kword)
+        {
+            Id = id;
+            eWord = eword;
+            kWord = kword;
         }
     }
     #endregion
