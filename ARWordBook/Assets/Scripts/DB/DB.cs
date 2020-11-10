@@ -12,7 +12,7 @@ public class DB : MonoBehaviour
 {
     private void Start()
     {
-        DataBaseInsert("insert into Word(word,mean) values(\"mike\",\"mike\")");
+        GetDBFilePath();
         DataBaseRead("Select * From Word");
     }
     #region DB생성
@@ -65,7 +65,13 @@ public class DB : MonoBehaviour
     {
         try
         {
-            string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+            string dblocate;
+#if UNITY_EDITOR
+            dblocate = @"Data Source=D:\Git\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db.db;Pooling=true;FailIfMissing=false;Version=3";
+#endif
+#if UNITY_ANDROID
+            dblocate = (Application.dataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3");
+#endif
             IDbConnection dbConnection = new SqliteConnection(dblocate);
             dbConnection.Open();
             if (dbConnection.State == ConnectionState.Open)
@@ -86,7 +92,13 @@ public class DB : MonoBehaviour
     #region DB읽기
     public void DataBaseRead(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate;
+#if UNITY_EDITOR
+        dblocate = @"Data Source=D:\Git\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+#endif
+#if UNITY_ANDROID
+        dblocate = (Application.dataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3");
+#endif
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -108,7 +120,13 @@ public class DB : MonoBehaviour
     #region DB 삽입
     public void DataBaseInsert(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate;
+#if UNITY_EDITOR
+        dblocate = @"Data Source=D:\Git\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+#endif
+#if UNITY_ANDROID
+        dblocate = (Application.dataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3");
+#endif
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -130,7 +148,13 @@ public class DB : MonoBehaviour
     #region DB 삭제
     public void DataBaseDelete(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate;
+#if UNITY_EDITOR
+        dblocate = @"Data Source=D:\Git\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+#endif
+#if UNITY_ANDROID
+        dblocate = (Application.dataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3");
+#endif
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -148,5 +172,5 @@ public class DB : MonoBehaviour
         dbConnection.Close();   // DB에는 1개의 쓰레드만이 접근할수있고 동시접근시 에러
         dbConnection = null;
     }
-    #endregion
+#endregion
 }
