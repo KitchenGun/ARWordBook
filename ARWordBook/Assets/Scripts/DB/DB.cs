@@ -10,10 +10,13 @@ using UnityEngine.UI;
 
 public class DB : MonoBehaviour
 {
+    List<Word> Wlist = new List<Word>();
     private void Start()
     {
-        DataBaseInsert("insert into Word(word,mean) values(\"mike\",\"mike\")");
+        //DataBaseInsert("insert into Word(word,mean) values(\"mike\",\"mike\")");
         DataBaseRead("Select * From Word");
+        //DBConnectionCheck();
+        //GetDBFilePath();
     }
     #region DB생성
     IEnumerator DBCreate()
@@ -65,7 +68,7 @@ public class DB : MonoBehaviour
     {
         try
         {
-            string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+            string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\ArWordBook\ARWordBook\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
             IDbConnection dbConnection = new SqliteConnection(dblocate);
             dbConnection.Open();
             if (dbConnection.State == ConnectionState.Open)
@@ -86,7 +89,7 @@ public class DB : MonoBehaviour
     #region DB읽기
     public void DataBaseRead(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -95,6 +98,9 @@ public class DB : MonoBehaviour
         while (dataReader.Read())
         {
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
+            Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
+            Wlist.Add(word);
+            Debug.Log(word.dWord + "," +  word.Mean);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -117,6 +123,9 @@ public class DB : MonoBehaviour
         while (dataReader.Read())
         {
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
+            Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
+            Wlist.Add(word);
+            Debug.Log(word.dWord + "," + word.Mean);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -139,6 +148,9 @@ public class DB : MonoBehaviour
         while (dataReader.Read())
         {
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
+            Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
+            Wlist.Add(word);
+            Debug.Log(word.dWord + "," + word.Mean);
             //0,1,2필드 읽기
         }
         dataReader.Dispose();       //생성순서와 반대로 닫음
@@ -147,6 +159,21 @@ public class DB : MonoBehaviour
         dbCommand = null;
         dbConnection.Close();   // DB에는 1개의 쓰레드만이 접근할수있고 동시접근시 에러
         dbConnection = null;
+    }
+    #endregion
+    #region Word class
+    class Word
+    {
+        public int no { get; set; }
+        public string dWord {get;set;}
+        public string Mean { get; set; }
+
+        public Word(string dword, string mean)
+        {
+            
+            dWord = dword;
+            Mean = mean;
+        }
     }
     #endregion
 }
