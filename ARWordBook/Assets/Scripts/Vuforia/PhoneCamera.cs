@@ -19,55 +19,7 @@ public class PhoneCamera : MonoBehaviour
     public AspectRatioFitter fitter;
     public Text textOCR;
 
-    void Start()
-    {
-        texture = rawImage.texture; // whatever image is in the scene view, that will be the defaultBackground
-        WebCamDevice[] devices = WebCamTexture.devices;
-        if (devices.Length == 0)
-        {
-            Debug.Log("Phone does not have a camera");
-            camAvailable = false;
-            return;
-        }
-
-        for (int i = 0; i < devices.Length; i++)
-        {
-            if (!devices[i].isFrontFacing)
-            {
-                webCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
-                break;
-            }
-        }
-
-        if (webCam == null)
-        {
-            Debug.Log("No back facing camera found");
-            return;
-        }
-
-        webCam.Play(); // we can start rendering
-        rawImage.texture = webCam; // to be used as a normal texture
-
-        camAvailable = true;
-    }
-
-    void Update()
-    {
-        if (!camAvailable)
-        {
-            // camera still not available
-            return;
-        }
-
-        float ratio = (float)webCam.width / (float)webCam.height;
-        fitter.aspectRatio = ratio;
-
-        float scaleY = webCam.videoVerticallyMirrored ? -1f : 1f;
-        rawImage.rectTransform.localScale = new Vector3(1f, scaleY, 1f); // flip in the Y axes if backCam is mirrored vertically
-
-        int orient = -webCam.videoRotationAngle;
-        rawImage.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
-    }
+   
     public void btnClick()
     {
         byte[] jpg = getBytesFromImage();
