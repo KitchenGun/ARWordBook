@@ -31,7 +31,10 @@ public class PhoneCamera : MonoBehaviour
 
     private byte[] getBytesFromImage()
     {
-        Texture2D snap = new Texture2D(webCam.width, webCam.height);
+        string[] files = null;
+        string pathToFile = files[0];
+
+        Texture2D snap = GetScreenshotImage(pathToFile);
         snap.SetPixels(webCam.GetPixels());
         snap.Apply();
 
@@ -41,6 +44,20 @@ public class PhoneCamera : MonoBehaviour
         byte[] bytes = snap.EncodeToJPG();
         textOCR.text = "Byte length: " + bytes.Length;
         return bytes;
+    }
+
+   
+    Texture2D GetScreenshotImage(string filePath)
+    {
+        Texture2D texture = null;
+        byte[] fileBytes;
+        if (File.Exists(filePath))
+        {
+            fileBytes = File.ReadAllBytes(filePath);
+            texture = new Texture2D(2, 2, TextureFormat.RGB24, false);
+            texture.LoadImage(fileBytes);
+        }
+        return texture;
     }
 
     private IEnumerator requestVisionAPI(string base64Image)
