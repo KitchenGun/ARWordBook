@@ -114,7 +114,7 @@ public class PhoneCamera : MonoBehaviour
 
                 }
             }
-
+            Manager.instance.SplitManager(textInImage);
             textOCR.text = textInImage;
         }
     }

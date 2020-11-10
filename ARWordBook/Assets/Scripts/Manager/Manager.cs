@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Security.Permissions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
+    public List<string> OcrList { get; set; }
+
     private int SceneNum=0;
     // Start is called before the first frame update
 
@@ -59,5 +65,14 @@ public class Manager : MonoBehaviour
     {
         SceneManager.LoadScene(2);
     }
+    #endregion
+
+    #region ocr결과를 배열에 저장
+
+    public void SplitManager(string str)
+    {
+        List<string> ocrlist = str.Split('\n').ToList();
+    }
+
     #endregion
 }
