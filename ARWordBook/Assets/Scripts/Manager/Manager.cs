@@ -11,7 +11,6 @@ public class Manager : MonoBehaviour
 
     void Start()
     {
-        
         if(instance == null)
         {
             instance=this;
@@ -27,19 +26,22 @@ public class Manager : MonoBehaviour
     public void LateUpdate()
     {
         #region 뒤로가기 키 입력
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Application.platform == RuntimePlatform.Android)
         {
-            switch (SceneNum)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                case 0:
-                    Application.Quit();
-                    break;
-                case 1:
-                    Application.Quit();
-                    break;
-                case 2:
-                    SceneManager.LoadScene(1);
-                    break;
+                switch (SceneNum)
+                {
+                    case 0:
+                        Application.Quit();
+                        break;
+                    case 1:
+                        Application.Quit();
+                        break;
+                    case 2:
+                        SceneManager.LoadScene(1);
+                        break;
+                }
             }
         }
         #endregion
