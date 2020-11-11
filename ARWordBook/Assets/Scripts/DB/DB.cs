@@ -10,6 +10,20 @@ using UnityEngine.UI;
 
 public class DB : MonoBehaviour
 {
+    #region 싱글톤
+    //1. 생성자 은닉
+    private DB()
+    {
+    }
+    //2. 프로퍼티 선언
+    static public DB Singleton { get; private set; }
+    //3. static 생성자에서 객체 생성(단 한번 호출되는 문장)
+    static DB()
+    {
+        Singleton = new DB();
+    }
+    #endregion
+
     List<Word> Wlist = new List<Word>();
     private void Start()
     {
