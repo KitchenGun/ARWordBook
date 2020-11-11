@@ -19,8 +19,7 @@ public class WordScrollView : MonoBehaviour
     private List<GameObject> ButtonList;
     public Text text;
     private GameObject prbutton;
-    
-
+    private GameObject panel;
     private string name;//삭제할 아이디 저장용
 
     #region  ScrollView 초기화
@@ -55,14 +54,15 @@ public class WordScrollView : MonoBehaviour
     {
         prbutton = EventSystem.current.currentSelectedGameObject;
         name = (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
-        GameObject panel = Instantiate(DeletePanel, canvas.transform.position, Quaternion.identity) as GameObject;
+        panel = Instantiate(DeletePanel, canvas.transform.position, Quaternion.identity) as GameObject;
         panel.transform.parent = canvas.transform;
     }
     public void Remove()
     {
         Destroy(prbutton);
-        DB.Singleton.DataBaseDelete("Delete from Word where word = " + name);
-        Destroy(DeletePanel); 
+        Destroy(panel);
+        DB.Singleton.DataBaseDelete("Delete from Word where word = '" + name+"'");
+       
     }
     public void RemoveCancel()
     {
