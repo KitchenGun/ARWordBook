@@ -13,17 +13,26 @@ public class ChageWord : MonoBehaviour
     private List<string> PrintList = new List<string>();
     private List<string> PrintListDes = new List<string>();
     private int ran;
-    private bool isbutton = false;       //버튼이 눌렸는지 확인
+    private bool isbutton;       //버튼이 눌렸는지 확인
 
+    private void Start()
+    {
+        WordEnabled(false);
+    }
+
+    private void WordEnabled(bool enabled)
+    {
+        word.enabled = wordes.enabled = isbutton = enabled;
+    }
 
     #region start버튼
     public void StartButton()
     {
         if (isbutton == false)
         {
+            WordEnabled(true);
             CreateList();
             ran = Random.Range(0, PrintList.Count);
-            isbutton = true;
             StartCoroutine("Chage");
         }
     }
@@ -48,14 +57,14 @@ public class ChageWord : MonoBehaviour
             else
                 break;            
         }
-        isbutton = false;
+        WordEnabled(false);
     }
     #endregion
 
     #region stop버튼
     public void StopButton()
     {
-        isbutton = false;
+        WordEnabled(false);
     }
     #endregion
 
