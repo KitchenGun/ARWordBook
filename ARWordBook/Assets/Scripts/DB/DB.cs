@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class DB : MonoBehaviour
 {
+    private List<Word> Wlist = new List<Word>();
     #region 싱글톤
     //1. 생성자 은닉
     private DB()
@@ -24,7 +25,6 @@ public class DB : MonoBehaviour
     }
     #endregion
 
-    List<Word> Wlist = new List<Word>();
     private void Start()
     {
         //DataBaseInsert("insert into Word(word,mean) values(\"mike\",\"mike\")");
@@ -32,6 +32,7 @@ public class DB : MonoBehaviour
         //DBConnectionCheck();
         //GetDBFilePath();
     }
+
     #region DB생성
     IEnumerator DBCreate()
     {
@@ -101,7 +102,7 @@ public class DB : MonoBehaviour
     }
     #endregion
     #region DB읽기
-    public void DataBaseRead(string query)//인자로 쿼리문을 받음
+    public List<Word> DataBaseRead(string query)//인자로 쿼리문을 받음
     {
         string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
@@ -123,6 +124,14 @@ public class DB : MonoBehaviour
         dbCommand = null;
         dbConnection.Close();   // DB에는 1개의 쓰레드만이 접근할수있고 동시접근시 에러
         dbConnection = null;
+        if(Wlist.Count>0)
+        {
+            return Wlist;
+        }
+        else
+        {
+            return null;
+        }
     }
     #endregion
     #region DB 삽입
@@ -175,24 +184,6 @@ public class DB : MonoBehaviour
         dbConnection = null;
     }
     #endregion
-    #region Word class
-    class Word
-    {
-        public int Id { get; set; }
-        public string eWord {get;set;}
-        public string kWord { get; set; }
+    
 
-        public Word(string eword, string kword)
-        {
-            eWord = eword;
-            kWord = kword;
-        }
-        public Word(int id,string eword, string kword)
-        {
-            Id = id;
-            eWord = eword;
-            kWord = kword;
-        }
-    }
-    #endregion
 }
