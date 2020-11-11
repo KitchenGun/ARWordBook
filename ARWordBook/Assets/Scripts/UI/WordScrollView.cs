@@ -18,16 +18,11 @@ public class WordScrollView : MonoBehaviour
     private GameObject DeletePanel;
     private List<GameObject> ButtonList;
     public Text text;
+    private GameObject prbutton;
     
 
-    private int id;//삭제할 아이디 저장용
+    private string name;//삭제할 아이디 저장용
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-        
-    }
     #region  ScrollView 초기화
     public void ScrollViewInit()
     {
@@ -58,16 +53,16 @@ public class WordScrollView : MonoBehaviour
     #region 버튼 클릭시 버튼의 단어 삭제 
    public void WordRemoveButtonClick()
     {
-        int id = int.Parse(EventSystem.current.currentSelectedGameObject.name);
+        prbutton = EventSystem.current.currentSelectedGameObject;
+        name = (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
         GameObject panel = Instantiate(DeletePanel, canvas.transform.position, Quaternion.identity) as GameObject;
         panel.transform.parent = canvas.transform;
     }
     public void Remove()
     {
-        Destroy(DeletePanel);
-        GameObject curWord=GameObject.Find(EventSystem.current.currentSelectedGameObject.name);
-        Destroy(curWord);
-        DB.Singleton.DataBaseDelete("Delete from Word where no = " + id);
+        Destroy(prbutton);
+        DB.Singleton.DataBaseDelete("Delete from Word where word = " + name);
+        Destroy(DeletePanel); 
     }
     public void RemoveCancel()
     {
