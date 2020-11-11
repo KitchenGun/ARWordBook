@@ -16,6 +16,7 @@ public class WordScrollView : MonoBehaviour
     private GameObject Button;
     private GameObject DeletePanel;
     private List<Button> ButtonList;
+    public Text text;
     
 
     private int id;//삭제할 아이디 저장용
@@ -27,8 +28,9 @@ public class WordScrollView : MonoBehaviour
         wordList = DB.Singleton.DataBaseRead("Select * from Word");
     }
     #region  ScrollView 초기화
-    private void ScrollViewInit()
+    public void ScrollViewInit()
     {
+        text.text = wordList.Count.ToString();
         foreach (Word curWord in wordList)
         {//버튼을 추가
             GameObject Word = Instantiate(Button, content.transform.position, Quaternion.identity) as GameObject;
