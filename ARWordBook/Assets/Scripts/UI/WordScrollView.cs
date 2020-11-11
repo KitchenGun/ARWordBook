@@ -14,6 +14,7 @@ public class WordScrollView : MonoBehaviour
     private GameObject canvas;//위치값 받는 용도
     [SerializeField]
     private GameObject Button;
+    [SerializeField]
     private GameObject DeletePanel;
     private List<GameObject> ButtonList;
     public Text text;
