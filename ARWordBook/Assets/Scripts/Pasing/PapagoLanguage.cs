@@ -8,7 +8,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PapagoLanguage : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,6 @@ public class NewBehaviourScript : MonoBehaviour
 
             if (translanguage != "en")
                 Manager.instance.OcrList.Remove(comparstring);
-
         }
     }
     
