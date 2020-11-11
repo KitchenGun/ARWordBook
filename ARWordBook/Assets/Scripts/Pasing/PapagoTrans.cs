@@ -11,26 +11,26 @@ using UnityEngine.UI;
 public class PapagoTrans : MonoBehaviour
 {
     public Dropdown dropdown;
+    public Text Word;
     string EnWord;
 
     private Manager manger;
 
     public void Click()
     {
-        EnWord = dropdown.captionText.text;
+        //EnWord = dropdown.captionText.text;
+        EnWord = Word.text; 
         WordInsert(EnWord);
     }
 
     public void Start()
     {
-            manger= GameObject.Find("Manager").GetComponent<Manager>();
-        
+        manger= GameObject.Find("Manager").GetComponent<Manager>();        
     }
 
     private void WordInsert(string language)
     {
         string jsonstr = TransLanguage(language);
-
 
         //방법 1
         JObject jobj = JObject.Parse(jsonstr);
