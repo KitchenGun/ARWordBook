@@ -60,6 +60,7 @@ public class WordScrollView : MonoBehaviour
     {
         int id = int.Parse(EventSystem.current.currentSelectedGameObject.name);
         GameObject panel = Instantiate(DeletePanel, canvas.transform.position, Quaternion.identity) as GameObject;
+        panel.transform.parent = canvas.transform;
     }
     public void Remove()
     {
