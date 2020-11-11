@@ -83,7 +83,7 @@ public class DB : MonoBehaviour
     {
         try
         {
-            string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\ArWordBook\ARWordBook\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+            string dblocate = @"Data Source=" + Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
             IDbConnection dbConnection = new SqliteConnection(dblocate);
             dbConnection.Open();
             if (dbConnection.State == ConnectionState.Open)
@@ -104,7 +104,7 @@ public class DB : MonoBehaviour
     #region DB읽기
     public List<Word> DataBaseRead(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source="+Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -137,7 +137,7 @@ public class DB : MonoBehaviour
     #region DB 삽입
     public void DataBaseInsert(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=" + Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -162,7 +162,7 @@ public class DB : MonoBehaviour
     #region DB 삭제
     public void DataBaseDelete(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=C:\Users\user\Documents\GitHub\Sqllite\Assets\Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=" + Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
