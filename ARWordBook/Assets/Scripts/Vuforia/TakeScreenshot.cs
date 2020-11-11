@@ -16,12 +16,18 @@ public class TakeScreenshot : MonoBehaviour {
 	//캡쳐 enumerator
 	private IEnumerator CaptureIt()
 	{
+		GameObject blinkCopy=Instantiate(blink, blinktrans.transform.position, Quaternion.identity) as GameObject;
 		string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
 		string fileName = "Screenshot" + timeStamp + ".png";
 		string pathToSave = fileName;
+		blinkCopy.transform.localScale = new Vector3(blinkCopy.transform.localScale.x, 0, blinkCopy.transform.localScale.z);
 		ScreenCapture.CaptureScreenshot(pathToSave);
 		yield return new WaitForEndOfFrame();
-		Instantiate (blink, blinktrans.transform.position, Quaternion.identity);
+		GameObject arCam = GameObject.Find("ARCamera");
+		yield return new WaitForSeconds(0.5f);
+		arCam.GetComponent<PhoneCamera>().btnClick();
+		//씬 이동
+		Manager.instance.CallSelectWordScene();
 	}
 
 }

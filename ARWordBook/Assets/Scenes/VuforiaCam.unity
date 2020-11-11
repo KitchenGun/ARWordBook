@@ -469,8 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71201194910e0344da84031c00073178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blink: {fileID: 3569775276067164584, guid: f1c95d04834d2f94e9563d268e3de294, type: 3}
-  blinktrans: {fileID: 859349444}
+  blink: {fileID: 7528530828896385829, guid: f8f9c6a3bbe320a4cbcefdd23eb71f6a, type: 3}
+  blinktrans: {fileID: 1271911722}
 --- !u!1 &859349443
 GameObject:
   m_ObjectHideFlags: 0
