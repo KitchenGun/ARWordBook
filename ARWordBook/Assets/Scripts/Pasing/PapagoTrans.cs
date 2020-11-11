@@ -12,6 +12,13 @@ public class PapagoTrans : MonoBehaviour
 {
     public Dropdown dropdown;
     // Start is called before the first frame update
+    void Start()
+    {
+        string EnWord;
+        EnWord = dropdown.captionText.text;
+
+        WordInsert(EnWord);
+    }
 
     private void WordInsert(string language)
     {
