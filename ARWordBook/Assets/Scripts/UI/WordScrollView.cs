@@ -66,7 +66,7 @@ public class WordScrollView : MonoBehaviour
     }
     public void RemoveCancel()
     {
-        Destroy(DeletePanel);
+        Destroy(panel);
     }
     #endregion
 }

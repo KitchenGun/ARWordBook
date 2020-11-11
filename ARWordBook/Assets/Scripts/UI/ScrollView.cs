@@ -13,7 +13,7 @@ public class ScrollView : MonoBehaviour
     private GameObject Toggle;
     private List<Toggle> contentList;
     private List<Word> rememberWordList;
-
+    private GameObject Word;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +26,11 @@ public class ScrollView : MonoBehaviour
     {
         foreach (Word curWord in wordList)
         {
-            GameObject Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
+            Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
             Word.name = curWord.Id.ToString();
+            Word.GetComponentInChildren<Text>().text = curWord.eWord;
             Word.transform.parent = content.transform;
-            contentList.Add(Word.GetComponent<Toggle>());
+            //contentList.Add(Word.GetComponent<Toggle>());
           }
     }
     #endregion
