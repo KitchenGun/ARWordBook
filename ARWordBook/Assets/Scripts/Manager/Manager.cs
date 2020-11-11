@@ -86,4 +86,14 @@ public class Manager : MonoBehaviour
     }
 
     #endregion
+<<<<<<< HEAD
+=======
+
+    #region 단어 선택 씬으로 이동
+    public void CallSelectWordScene()
+    {
+        SceneManager.LoadScene(3);
+    }
+    #endregion
+>>>>>>> 924990696d687d021309950e1a2344662bcf9ce1
 }
