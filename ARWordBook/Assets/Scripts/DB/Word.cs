@@ -13,10 +13,11 @@ public class Word : MonoBehaviour
         eWord = eword;
         kWord = kword;
     }
-    public Word(int id, string eword, string kword)
-    {
-        Id = id;
-        eWord = eword;
-        kWord = kword;
-    }
+
+    //public Word(int id, string eword, string kword)
+    //{
+    //    Id = id;
+    //    eWord = eword;
+    //    kWord = kword;
+    //}
 }

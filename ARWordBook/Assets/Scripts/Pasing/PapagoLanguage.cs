@@ -47,7 +47,7 @@ public class PapagoLanguage : MonoBehaviour
             if (translanguage != "en")
                 manger.OcrList.Remove(comparstring);
         }
-        dropdown.GetComponent<WordDropdown>().AddDropdown();
+        //dropdown.GetComponent<WordDropdown>().AddDropdown();
     }
     
 }

@@ -27,6 +27,7 @@ public class DB : MonoBehaviour
 
     private void Start()
     {
+        //DataBaseDelete("delete from Word");
         //DataBaseInsert("insert into Word(word,mean) values(\"mike\",\"mike\")");
         DataBaseRead("Select * From Word");
         //DBConnectionCheck();
@@ -104,7 +105,8 @@ public class DB : MonoBehaviour
     #region DB읽기
     public List<Word> DataBaseRead(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source="+Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        Wlist.Clear();
+        string dblocate = @"Data Source=C:\Users\82109\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -137,7 +139,7 @@ public class DB : MonoBehaviour
     #region DB 삽입
     public void DataBaseInsert(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=" + Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=C:\Users\82109\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -162,7 +164,7 @@ public class DB : MonoBehaviour
     #region DB 삭제
     public void DataBaseDelete(string query)//인자로 쿼리문을 받음
     {
-        string dblocate = @"Data Source=" + Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=C:\Users\82109\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();
@@ -171,7 +173,7 @@ public class DB : MonoBehaviour
         while (dataReader.Read())
         {
             Debug.Log(dataReader.GetInt32(0) + "," + dataReader.GetString(1) + "," + dataReader.GetString(2));
-            Word word = new Word(dataReader.GetInt32(0),dataReader.GetString(1), dataReader.GetString(2));
+            Word word = new Word(dataReader.GetString(1), dataReader.GetString(2));
             Wlist.Add(word);
             Debug.Log(word.eWord + "," + word.kWord);
             //0,1,2필드 읽기

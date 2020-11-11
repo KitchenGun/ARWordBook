@@ -38,7 +38,7 @@ public class PhoneCamera : MonoBehaviour
 
     private byte[] getBytesFromImage()
     {
-        files = Directory.GetFiles(Application.persistentDataPath + "/", "*.png");
+        files = Directory.GetFiles(@"C:\Users\82109\Documents\GitHub\ArWordBook\ARWordBook" + "/", "*.png");
         string pathToFile = files[0];
        
         Texture2D snap = GetScreenshotImage(pathToFile);

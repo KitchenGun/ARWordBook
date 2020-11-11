@@ -15,7 +15,7 @@ public class WordScrollView : MonoBehaviour
     [SerializeField]
     private GameObject Button;
     private GameObject DeletePanel;
-    private List<Button> ButtonList;
+    private List<GameObject> ButtonList;
     public Text text;
     
 
@@ -24,21 +24,33 @@ public class WordScrollView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //db값 가져오기
-        wordList = DB.Singleton.DataBaseRead("Select * from Word");
+       
+        
     }
     #region  ScrollView 초기화
     public void ScrollViewInit()
     {
+        //wordList.Clear();
+         //db값 가져오기
+        wordList = DB.Singleton.DataBaseRead("Select * from Word");
         text.text = wordList.Count.ToString();
+
+        //foreach(GameObject gamobj in ButtonList)
+        //{
+        //    Destroy(gamobj);
+        //}
+        //ButtonList.Clear();
+
         foreach (Word curWord in wordList)
         {//버튼을 추가
             GameObject Word = Instantiate(Button, content.transform.position, Quaternion.identity) as GameObject;
             Word.name = curWord.Id.ToString();
             Word.GetComponentInChildren<Text>().text = curWord.eWord;
+            Word.transform.parent = content.transform;
             //추가 버튼 리스트 추가
-            ButtonList.Add(Word.GetComponent<Button>());
+            //ButtonList.Add(Word);
         }
+        wordList.Clear();
     }
     #endregion
 
