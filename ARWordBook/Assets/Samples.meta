@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:ARWordBook/Assets/Resources/Word.xml.meta
-guid: 40935fdd69903ed4ea09ccfd5e1c67dc
-=======
 guid: 02d67c4723a593043ab4b3f981461267
 folderAsset: yes
 timeCreated: 1519046725
 licenseType: Free
->>>>>>> main:ARWordBook/Assets/Samples.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

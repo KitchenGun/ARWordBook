@@ -26,12 +26,8 @@ public class TakeScreenshot : MonoBehaviour {
 		GameObject arCam = GameObject.Find("ARCamera");
 		yield return new WaitForSeconds(0.5f);
 		arCam.GetComponent<PhoneCamera>().btnClick();
-<<<<<<< HEAD
-		Instantiate (blink, blinktrans.transform.position, Quaternion.identity);
-=======
 		//씬 이동
 		Manager.instance.CallSelectWordScene();
->>>>>>> 924990696d687d021309950e1a2344662bcf9ce1
 	}
 
 }
