@@ -12,7 +12,6 @@ public class Manager : MonoBehaviour
 {
     public static Manager instance;
     public List<string> OcrList { get; set; }
-    public Text text;
     private int SceneNum=0;
     // Start is called before the first frame update
 
@@ -65,10 +64,6 @@ public class Manager : MonoBehaviour
     {
         Debug.Log("Load");
         SceneNum = SceneManager.GetActiveScene().buildIndex;
-        if(SceneNum==2)
-        {
-            text = GameObject.Find("ListText").GetComponent<Text>();
-        }
     }
     void OnDisable()
     {
@@ -88,11 +83,6 @@ public class Manager : MonoBehaviour
     public void SplitManager(string str)
     {
         OcrList = str.Split('\n').ToList();
-        foreach(string debuglog in OcrList)
-        {
-            text.text += debuglog;
-            Debug.Log(debuglog);
-        }
     }
 
     #endregion
