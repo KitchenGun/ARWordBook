@@ -21,6 +21,9 @@ public class TakeScreenshot : MonoBehaviour {
 		string pathToSave = fileName;
 		ScreenCapture.CaptureScreenshot(pathToSave);
 		yield return new WaitForEndOfFrame();
+		GameObject arCam = GameObject.Find("ARCamera");
+		yield return new WaitForSeconds(0.5f);
+		arCam.GetComponent<PhoneCamera>().btnClick();
 		Instantiate (blink, blinktrans.transform.position, Quaternion.identity);
 	}
 

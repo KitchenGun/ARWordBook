@@ -6,12 +6,13 @@ using System.Linq;
 using System.Security.Permissions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
     public List<string> OcrList { get; set; }
-
+    public Text text;
     private int SceneNum=0;
     // Start is called before the first frame update
 
@@ -27,6 +28,7 @@ public class Manager : MonoBehaviour
             Destroy(this.gameObject);
         }
         SceneNum =SceneManager.GetActiveScene().buildIndex;
+
     }
 
     public void LateUpdate()
@@ -54,9 +56,23 @@ public class Manager : MonoBehaviour
     }
 
     #region 현재씬 확인
-    private void OnSceneLoaded()
+    void OnEnable()
     {
+        // 씬 매니저의 sceneLoaded에 체인을 건다.
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Load");
         SceneNum = SceneManager.GetActiveScene().buildIndex;
+        if(SceneNum==2)
+        {
+            text = GameObject.Find("ListText").GetComponent<Text>();
+        }
+    }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     #endregion
 
@@ -71,7 +87,12 @@ public class Manager : MonoBehaviour
 
     public void SplitManager(string str)
     {
-        List<string> ocrlist = str.Split('\n').ToList();
+        OcrList = str.Split('\n').ToList();
+        foreach(string debuglog in OcrList)
+        {
+            text.text += debuglog;
+            Debug.Log(debuglog);
+        }
     }
 
     #endregion

@@ -41,7 +41,6 @@ public class PhoneCamera : MonoBehaviour
         camAvailable = false;
 
         byte[] bytes = snap.EncodeToPNG();
-        textOCR.text = "Byte length: " + bytes.Length;
         return bytes;
     }
 
