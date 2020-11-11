@@ -9,6 +9,8 @@ public class ScrollView : MonoBehaviour
     private List<Word> wordList;
     [SerializeField]
     private GameObject content;
+    [SerializeField]
+    private GameObject Toggle;
     private List<Toggle> contentList;
     private List<Word> rememberWordList;
 
@@ -16,14 +18,15 @@ public class ScrollView : MonoBehaviour
     void Start()
     {
         //db값 가져오기
-       wordList=DB.Singleton.DataBaseRead("Select * from Word");
+         wordList = DB.Singleton.DataBaseRead("Select * from Word");
+      
     }
     #region  ScrollView 초기화
     private void ScrollViewInit()
     {
         foreach (Word curWord in wordList)
         {
-            GameObject Word = Instantiate(content, content.transform.position, Quaternion.identity) as GameObject;
+            GameObject Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
             Word.name = curWord.Id.ToString();
             contentList.Add(Word.GetComponent<Toggle>());
           }

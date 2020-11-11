@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VuforiaCam.unity
     guid: b2fe08d01f4dedf4c9b6fa7b7715b231
-  - enabled: 0
-    path: Assets/Samples/CameraToVision/CameraToVison.unity
-    guid: 9d6077f7836ee8c44be70afb4896ddd0
+  - enabled: 1
+    path: Assets/Scenes/SelectWord.unity
+    guid: 44800a819981e264f9cae65f8f45c148
   m_configObjects: {}

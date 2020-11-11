@@ -116,6 +116,7 @@ public class PhoneCamera : MonoBehaviour
 
             if(textInImage !=null)
             {
+                textOCR.text = null;
                 Manager.instance.SplitManager(textInImage);
                 textOCR.text = textInImage;
             }

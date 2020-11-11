@@ -17,8 +17,7 @@ public class TakeScreenshot : MonoBehaviour {
 	private IEnumerator CaptureIt()
 	{
 		GameObject blinkCopy=Instantiate(blink, blinktrans.transform.position, Quaternion.identity) as GameObject;
-		string timeStamp = System.DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss");
-		string fileName = "Screenshot" + timeStamp + ".png";
+		string fileName = "Screenshot" + ".png";
 		string pathToSave = fileName;
 		blinkCopy.transform.localScale = new Vector3(blinkCopy.transform.localScale.x, 0, blinkCopy.transform.localScale.z);
 		ScreenCapture.CaptureScreenshot(pathToSave);
