@@ -14,7 +14,6 @@ public class PapagoTrans : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            
     }
 
     private void WordInsert(string language)
@@ -25,6 +24,8 @@ public class PapagoTrans : MonoBehaviour
         //방법 1
         JObject jobj = JObject.Parse(jsonstr);
         string translanguage = jobj["message"]["result"]["translatedText"].ToString();
+        DB.Singleton.DataBaseInsert("insert into Word(word,mean) values(\"" + language + "\",\"" + translanguage + "\")");
+        DB.Singleton.DataBaseRead("Select * From Word");
         Debug.Log(translanguage);
     }
 
