@@ -9,6 +9,9 @@ public class ChageWord : MonoBehaviour
     public Text wordes;
     public float time;
     public Text count;
+    public Text roop;
+    public Button startbutton;
+    public Button stopbutton;
     
     private List<string> PrintList = new List<string>();
     private List<string> PrintListDes = new List<string>();
@@ -22,7 +25,14 @@ public class ChageWord : MonoBehaviour
 
     private void WordEnabled(bool enabled)
     {
-        word.enabled = wordes.enabled = isbutton = enabled;
+        word.enabled = wordes.enabled = isbutton = roop.enabled =enabled;
+    }
+
+    private void ButtonPosition()
+    {
+        var temp = startbutton.transform.position;
+        startbutton.transform.position = stopbutton.transform.position;
+        stopbutton.transform.position = temp;
     }
 
     #region start버튼
@@ -31,6 +41,7 @@ public class ChageWord : MonoBehaviour
         if (isbutton == false)
         {
             WordEnabled(true);
+            ButtonPosition();
             CreateList();
             ran = Random.Range(0, PrintList.Count);
             StartCoroutine("Chage");
@@ -39,9 +50,10 @@ public class ChageWord : MonoBehaviour
 
     private IEnumerator Chage()
     {
-        int roopcount = int.Parse(count.text) * PrintList.Count;
+        int roopcount = int.Parse(count.text);
         for (int i = 0; i < roopcount; i++)
         {
+            roop.text = (roopcount - i).ToString();
             if (isbutton == true)
             {
                 word.text = PrintList[ran];
@@ -58,6 +70,7 @@ public class ChageWord : MonoBehaviour
                 break;            
         }
         WordEnabled(false);
+        ButtonPosition();
     }
     #endregion
 
