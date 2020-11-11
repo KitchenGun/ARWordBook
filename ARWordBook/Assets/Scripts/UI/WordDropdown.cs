@@ -26,6 +26,8 @@ public class WordDropdown : MonoBehaviour
             data.text = ocrTransWord;
             OcrTransListDropdown.options.Add(data);
         }
+
+        Manager.instance.OcrList.Clear();
     }
     #endregion
     #region 드롭다운 초기화
