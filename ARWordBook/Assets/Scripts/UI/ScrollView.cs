@@ -19,7 +19,7 @@ public class ScrollView : MonoBehaviour
     {
         //db값 가져오기
          wordList = DB.Singleton.DataBaseRead("Select * from Word");
-      
+        ScrollViewInit();
     }
     #region  ScrollView 초기화
     private void ScrollViewInit()
@@ -28,6 +28,7 @@ public class ScrollView : MonoBehaviour
         {
             GameObject Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
             Word.name = curWord.Id.ToString();
+            Word.transform.parent = content.transform;
             contentList.Add(Word.GetComponent<Toggle>());
           }
     }
