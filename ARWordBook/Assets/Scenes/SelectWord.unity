@@ -2633,7 +2633,7 @@ MonoBehaviour:
   content: {fileID: 1333906377}
   canvas: {fileID: 2085280603}
   Button: {fileID: 7577257387041209855, guid: c4cac90f169bea64eaa0a2728d9da21d, type: 3}
-  DeletePanel: {fileID: 2888161305038630561, guid: 02faf05783a022443ad394cf2a47c4e2,
+  DeletePanel: {fileID: 153590511804100190, guid: 02faf05783a022443ad394cf2a47c4e2,
     type: 3}
   text: {fileID: 1838304272}
 --- !u!1 &2085280603
