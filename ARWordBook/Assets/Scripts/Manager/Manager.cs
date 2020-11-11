@@ -15,7 +15,7 @@ public class Manager : MonoBehaviour
     private int SceneNum=0;
     // Start is called before the first frame update
 
-    void Start()
+    void Awake()
     {
         if(instance == null)
         {
@@ -27,7 +27,7 @@ public class Manager : MonoBehaviour
             Destroy(this.gameObject);
         }
         SceneNum =SceneManager.GetActiveScene().buildIndex;
-
+        StartCoroutine(DB.Singleton.DBCreate());
     }
 
     public void LateUpdate()

@@ -17,9 +17,15 @@ public class PhoneCamera : MonoBehaviour
 
     public RawImage rawImage;
     public AspectRatioFitter fitter;
-    public Text textOCR;
-
+    private Manager manager;
     string[] files = null;
+
+    public Text textocr;
+
+    public void Start()
+    {
+         manager= GameObject.Find("Manager").GetComponent<Manager>();
+    }
 
     public void btnClick()
     {
@@ -116,9 +122,8 @@ public class PhoneCamera : MonoBehaviour
 
             if(textInImage !=null)
             {
-                textOCR.text = null;
-                Manager.instance.SplitManager(textInImage);
-                textOCR.text = textInImage;
+                manager.SplitManager(textInImage);
+                textocr.text = textInImage;
             }
         }
     }

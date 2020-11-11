@@ -8,6 +8,8 @@ public class WordDropdown : MonoBehaviour
 {
     [SerializeField]
     private Dropdown OcrTransListDropdown;
+    public Text text;
+    private Manager manager = GameObject.Find("Manager").GetComponent<Manager>();
 
     private void Start()
     {//정의
@@ -21,13 +23,18 @@ public class WordDropdown : MonoBehaviour
         //정의
         Dropdown.OptionData data = new Dropdown.OptionData();
         //데이터 삽입
-        foreach (string ocrTransWord in Manager.instance.OcrList)
+        foreach (string ocrTransWord in manager.OcrList)
         {
             data.text = ocrTransWord;
+            if (data.text == null)
+            {
+                text.text = "값이안들어옴";
+            }
+            text.text = data.text;
             OcrTransListDropdown.options.Add(data);
         }
 
-        Manager.instance.OcrList.Clear();
+        manager.OcrList.Clear();
     }
     #endregion
     #region 드롭다운 초기화

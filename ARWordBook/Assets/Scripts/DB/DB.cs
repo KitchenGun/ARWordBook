@@ -34,7 +34,7 @@ public class DB : MonoBehaviour
     }
 
     #region DB생성
-    IEnumerator DBCreate()
+    public IEnumerator DBCreate()
     {
         string filepath = string.Empty; // 파일경로
         if (Application.platform == RuntimePlatform.Android) // 안드로이드일때

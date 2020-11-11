@@ -11,15 +11,17 @@ using UnityEngine;
 public class PapagoLanguage : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         string url = "https://openapi.naver.com/v1/papago/detectLangs";
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
         request.Headers.Add("X-Naver-Client-Id", "O5DRNru7NDVFATTOVipo");
         request.Headers.Add("X-Naver-Client-Secret", "AFkEKp5qpD");
         request.Method = "POST";
+        Manager manger = GameObject.Find("Manager").GetComponent<Manager>();
 
-        foreach (string comparstring in Manager.instance.OcrList)
+
+        foreach (string comparstring in manger.OcrList)
         { 
 
             byte[] byteDataParams = Encoding.UTF8.GetBytes("query=" + comparstring);
@@ -40,7 +42,7 @@ public class PapagoLanguage : MonoBehaviour
             string translanguage = jobj["langCode"].ToString();
 
             if (translanguage != "en")
-                Manager.instance.OcrList.Remove(comparstring);
+                manger.OcrList.Remove(comparstring);
         }
     }
     

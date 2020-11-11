@@ -13,10 +13,21 @@ public class PapagoTrans : MonoBehaviour
     public Dropdown dropdown;
     string EnWord;
 
+    public Text text;
+    private Manager manger = GameObject.Find("Manager").GetComponent<Manager>();
+
     public void Click()
     {
         EnWord = dropdown.captionText.text;
         WordInsert(EnWord);
+    }
+
+    public void Start()
+    {
+        foreach(string eword in manger.OcrList)
+        {
+            text.text += eword;
+        }
     }
 
     private void WordInsert(string language)
