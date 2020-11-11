@@ -15,8 +15,7 @@ public class ChageWord : MonoBehaviour
     public ScrollView WordScroll;
     public Button Cam;
     
-    private List<string> PrintList = new List<string>();
-    private List<string> PrintListDes = new List<string>();
+    private List<Word> rememberWordList = new List<Word>();
     private int ran;
     private bool isbutton;       //버튼이 눌렸는지 확인
 
@@ -62,7 +61,7 @@ public class ChageWord : MonoBehaviour
             CamAndScrollEnable(true);
             ButtonPosition();
             CreateList();
-            ran = Random.Range(0, PrintList.Count);
+            ran = Random.Range(0, rememberWordList.Count);
             StartCoroutine("Chage");
         }
     }
@@ -76,12 +75,12 @@ public class ChageWord : MonoBehaviour
             roop.text = (roopcount - i).ToString();
             if (isbutton == true)
             {
-                word.text = PrintList[ran];
-                wordes.text = PrintListDes[ran];
+                word.text = rememberWordList[ran].eWord;
+                wordes.text = rememberWordList[ran].kWord;
 
                 int temp = ran;
                 do
-                    ran = Random.Range(0, PrintList.Count);
+                    ran = Random.Range(0, rememberWordList.Count);
                 while (temp == ran);   
                 
                 yield return new WaitForSeconds(time);
@@ -118,16 +117,8 @@ public class ChageWord : MonoBehaviour
 
     private void CreateList()
     {
-        PrintList.Clear();
-        PrintListDes.Clear();
-        
-
+        rememberWordList.Clear();
         //단어추가
-        PrintList.Add("aaa");
-        PrintList.Add("bbb");
-        PrintList.Add("ccc");
-        PrintListDes.Add("AAA");
-        PrintListDes.Add("BBB");
-        PrintListDes.Add("CCC");
+        rememberWordList = GameObject.Find("ScrollView").GetComponent<ScrollView>().ScrollCheck();
     }
 }

@@ -97,4 +97,10 @@ public class Manager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
     #endregion
+
+    public void CallWordBookScene()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 }

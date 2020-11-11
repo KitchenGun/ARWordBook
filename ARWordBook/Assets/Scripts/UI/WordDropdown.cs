@@ -25,7 +25,7 @@ public class WordDropdown : MonoBehaviour
     {
         foreach (string word in words)
         {
-            OcrTransListDropdown.options.Add()
+            //OcrTransListDropdown.options.Add()
         } 
     }
     #endregion

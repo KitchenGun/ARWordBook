@@ -13,22 +13,24 @@ public class ScrollView : MonoBehaviour
     private GameObject Toggle;
     private List<Toggle> contentList;
     private List<Word> rememberWordList;
-
+    private GameObject Word;
     // Start is called before the first frame update
     void Start()
     {
         //db값 가져오기
          wordList = DB.Singleton.DataBaseRead("Select * from Word");
-      
+        ScrollViewInit();
     }
     #region  ScrollView 초기화
     private void ScrollViewInit()
     {
         foreach (Word curWord in wordList)
         {
-            GameObject Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
+            Word = Instantiate(Toggle, content.transform.position, Quaternion.identity) as GameObject;
             Word.name = curWord.Id.ToString();
-            contentList.Add(Word.GetComponent<Toggle>());
+            Word.GetComponentInChildren<Text>().text = curWord.eWord;
+            Word.transform.parent = content.transform;
+            //contentList.Add(Word.GetComponent<Toggle>());
           }
     }
     #endregion

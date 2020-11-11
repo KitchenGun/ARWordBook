@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:ARWordBook/Assets/Common/Editor/VersionChecker.meta
 guid: 43803e32d40ae41edba1318dd609222b
-=======
-guid: 50555006e3f3a8b4e8365d94d863a207
->>>>>>> Pasing:ARWordBook/Assets/Scripts/Pasing/JSON/Editor.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
