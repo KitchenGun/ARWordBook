@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    public List<string> OcrList { get; set; }
+    public List<string> OcrList;
     private int SceneNum=0;
     // Start is called before the first frame update
 
@@ -26,6 +26,7 @@ public class Manager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        OcrList = new List<string>();
         SceneNum =SceneManager.GetActiveScene().buildIndex;
         StartCoroutine(DB.Singleton.DBCreate());
     }
@@ -82,9 +83,12 @@ public class Manager : MonoBehaviour
 
     public void SplitManager(string str)
     {
-        OcrList = str.Split('\n').ToList();
+        string[] words = str.Split(' ');
+        foreach(string word in words)
+        {
+            OcrList.Add(word);
+        }
     }
-
     #endregion
 
     #region 단어 선택 씬으로 이동

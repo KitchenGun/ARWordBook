@@ -9,32 +9,24 @@ public class WordDropdown : MonoBehaviour
     [SerializeField]
     private Dropdown OcrTransListDropdown;
     public Text text;
-    private Manager manager = GameObject.Find("Manager").GetComponent<Manager>();
+    private Manager manager;
+
+    private List<string> words;
 
     private void Start()
     {//정의
         OcrTransListDropdown = GameObject.Find("OcrTransListDropdown").GetComponent<Dropdown>();
+        manager = GameObject.Find("Manager").GetComponent<Manager>();
+        words = manager.OcrList;
+        text.text = words[0];
     }
     #region 드롭다운에 추가
     public void AddDropdown()
     {
-        //드롭다운 초기화
-        ClearDropdown();
-        //정의
-        Dropdown.OptionData data = new Dropdown.OptionData();
-        //데이터 삽입
-        foreach (string ocrTransWord in manager.OcrList)
+        foreach (string word in words)
         {
-            data.text = ocrTransWord;
-            if (data.text == null)
-            {
-                text.text = "값이안들어옴";
-            }
-            text.text = data.text;
-            OcrTransListDropdown.options.Add(data);
-        }
-
-        manager.OcrList.Clear();
+            OcrTransListDropdown.options.Add()
+        } 
     }
     #endregion
     #region 드롭다운 초기화

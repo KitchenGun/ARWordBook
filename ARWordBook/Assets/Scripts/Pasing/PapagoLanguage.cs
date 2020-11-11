@@ -7,22 +7,25 @@ using System.Net;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PapagoLanguage : MonoBehaviour
 {
+    private Manager manger;
+    [SerializeField]
+    private GameObject dropdown;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        string url = "https://openapi.naver.com/v1/papago/detectLangs";
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-        request.Headers.Add("X-Naver-Client-Id", "O5DRNru7NDVFATTOVipo");
-        request.Headers.Add("X-Naver-Client-Secret", "AFkEKp5qpD");
-        request.Method = "POST";
-        Manager manger = GameObject.Find("Manager").GetComponent<Manager>();
-
+       manger = GameObject.Find("Manager").GetComponent<Manager>();
 
         foreach (string comparstring in manger.OcrList)
-        { 
+        {
+            string url = "https://openapi.naver.com/v1/papago/detectLangs";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Headers.Add("X-Naver-Client-Id", "O5DRNru7NDVFATTOVipo");
+            request.Headers.Add("X-Naver-Client-Secret", "AFkEKp5qpD");
+            request.Method = "POST";
 
             byte[] byteDataParams = Encoding.UTF8.GetBytes("query=" + comparstring);
             request.ContentType = "application/x-www-form-urlencoded";
@@ -44,6 +47,7 @@ public class PapagoLanguage : MonoBehaviour
             if (translanguage != "en")
                 manger.OcrList.Remove(comparstring);
         }
+        dropdown.GetComponent<WordDropdown>().AddDropdown();
     }
     
 }

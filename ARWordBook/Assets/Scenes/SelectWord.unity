@@ -750,7 +750,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: 
 --- !u!222 &536863246
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1101,6 +1101,7 @@ GameObject:
   - component: {fileID: 765340493}
   - component: {fileID: 765340492}
   - component: {fileID: 765340495}
+  - component: {fileID: 765340497}
   - component: {fileID: 765340496}
   m_Layer: 0
   m_Name: Main Camera
@@ -1187,6 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7236c361458b66b40bb5c5dcc30f428e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 1719275022}
 --- !u!114 &765340496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,6 +1202,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 1719275024}
+--- !u!114 &765340497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765340491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991b800ba6255ae429ea50043bc96246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OcrTransListDropdown: {fileID: 1719275024}
   text: {fileID: 1826394716}
 --- !u!1 &1333906377
 GameObject:
@@ -1829,7 +1844,6 @@ GameObject:
   - component: {fileID: 1719275026}
   - component: {fileID: 1719275025}
   - component: {fileID: 1719275024}
-  - component: {fileID: 1719275027}
   m_Layer: 0
   m_Name: OcrTransListDropdown
   m_TagString: Untagged
@@ -1906,13 +1920,7 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1953,20 +1961,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719275022}
   m_CullTransparentMesh: 0
---- !u!114 &1719275027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719275022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991b800ba6255ae429ea50043bc96246, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OcrTransListDropdown: {fileID: 0}
-  text: {fileID: 0}
 --- !u!1 &1746106201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1826394717
 CanvasRenderer:
   m_ObjectHideFlags: 0

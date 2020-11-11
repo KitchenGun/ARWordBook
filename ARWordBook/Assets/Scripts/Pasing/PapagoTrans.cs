@@ -13,8 +13,7 @@ public class PapagoTrans : MonoBehaviour
     public Dropdown dropdown;
     string EnWord;
 
-    public Text text;
-    private Manager manger = GameObject.Find("Manager").GetComponent<Manager>();
+    private Manager manger;
 
     public void Click()
     {
@@ -24,10 +23,8 @@ public class PapagoTrans : MonoBehaviour
 
     public void Start()
     {
-        foreach(string eword in manger.OcrList)
-        {
-            text.text += eword;
-        }
+            manger= GameObject.Find("Manager").GetComponent<Manager>();
+        
     }
 
     private void WordInsert(string language)
@@ -76,7 +73,5 @@ public class PapagoTrans : MonoBehaviour
 
         return text;
     }
-
-    
 
 }
