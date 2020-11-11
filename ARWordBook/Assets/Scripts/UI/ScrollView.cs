@@ -19,6 +19,8 @@ public class ScrollView : MonoBehaviour
     {
         //db값 가져오기
          wordList = DB.Singleton.DataBaseRead("Select * from Word");
+        contentList = new List<Toggle>();
+        rememberWordList = new List<Word>();
         ScrollViewInit();
     }
     #region  ScrollView 초기화
@@ -30,7 +32,7 @@ public class ScrollView : MonoBehaviour
             Word.name = curWord.Id.ToString();
             Word.GetComponentInChildren<Text>().text = curWord.eWord;
             Word.transform.parent = content.transform;
-            //contentList.Add(Word.GetComponent<Toggle>());
+            contentList.Add(Word.GetComponent<Toggle>());
           }
     }
     #endregion
@@ -43,8 +45,9 @@ public class ScrollView : MonoBehaviour
         {
             if(curToggle.isOn)
             {
-                int id = int.Parse(curToggle.gameObject.name);
-                quary = string.Format("Select *from Word where no=" + id);
+                string name = curToggle.gameObject.GetComponentInChildren<Text>().text;
+
+                quary = string.Format("Select *from Word where word= '" + name + "'");
                 rememberWordList.Add(DB.Singleton.DataBaseRead(quary)[0]);
             }
         }

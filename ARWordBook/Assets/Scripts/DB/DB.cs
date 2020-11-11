@@ -106,7 +106,8 @@ public class DB : MonoBehaviour
     public List<Word> DataBaseRead(string query)//인자로 쿼리문을 받음
     {
         Wlist.Clear();
-        string dblocate = @"Data Source="+ Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        //string dblocate = @"Data Source="+ Application.persistentDataPath + "/Word.db;Pooling=true;FailIfMissing=false;Version=3";
+        string dblocate = @"Data Source=C:\Users\82109\Documents\GitHub\ArWordBook\ARWordBook\Assets\StreamingAssets/Word.db;Pooling=true;FailIfMissing=false;Version=3";
         IDbConnection dbConnection = new SqliteConnection(dblocate);
         dbConnection.Open();
         IDbCommand dbCommand = dbConnection.CreateCommand();

@@ -15,7 +15,7 @@ public class ChageWord : MonoBehaviour
     public ScrollView WordScroll;
     public Button Cam;
     
-    private List<Word> rememberWordList = new List<Word>();
+    private List<Word> rememberWordList;
     private int ran;
     private bool isbutton;       //버튼이 눌렸는지 확인
 
@@ -117,8 +117,15 @@ public class ChageWord : MonoBehaviour
 
     private void CreateList()
     {
-        rememberWordList.Clear();
+        if (rememberWordList != null)
+            rememberWordList.Clear();
+        Debug.Log(GameObject.Find("Scroll View").name);
         //단어추가
-        rememberWordList = GameObject.Find("ScrollView").GetComponent<ScrollView>().ScrollCheck();
+        rememberWordList = GameObject.Find("Scroll View").GetComponent<ScrollView>().ScrollCheck();
+        
+        //Word word = new Word("aaa", "AAA");
+        //Word word2 = new Word("bbb", "BBB");
+        //rememberWordList.Add(word);
+        //rememberWordList.Add(word2);
     }
 }
